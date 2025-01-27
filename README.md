@@ -1,50 +1,99 @@
-# Welcome to your Expo app 👋
+# React Native Project Setup
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This guide provides step-by-step instructions to set up and run the React Native project.
 
-## Get started
+## Prerequisites
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- [Android Studio](https://developer.android.com/studio) (for emulator)
+- `adb` command-line tool (comes with Android Studio or can be installed separately)
 
-1. Install dependencies
+---
 
+## Steps to Set Up and Run the Project
+
+### Step 1: Install Required Packages
+
+1. Install `expo-modules-core` (try both commands if one fails):
    ```bash
-   npm install
+   expo install expo-modules-core
+   npm install expo-modules-core
    ```
 
-2. Start the app
-
+2. Install additional dependencies:
    ```bash
-    npx expo start
+   npm install expo-document-picker
+   npm install react-native-toast-message
+   npm install react-native-youtube-iframe
+   npm install @react-native-community/slider
+   npm install react-native-document-picker
+   npm install react-native-fs
    ```
 
-In the output, you'll find options to open the app in a
+3. *(Optional)* Install `expo-file-system` if required:
+   ```bash
+   expo install expo-file-system
+   ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+4. *(Optional)* Reinstall `expo-document-picker` if necessary:
+   ```bash
+   expo install expo-document-picker
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Step 2: Install Project Dependencies
 
-## Get a fresh project
-
-When you're ready, run:
-
+Move into the project directory and run:
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Step 3: Check Device Connectivity
 
-## Learn more
+1. Connect your mobile device via USB or launch the Android Studio Emulator.
+2. Verify the connection using the following command:
+   ```bash
+   adb devices
+   ```
+   Ensure your device appears in the list of connected devices.
 
-To learn more about developing your project with Expo, look at the following resources:
+### Step 4: Run the Project
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1. Start the project on an Android device:
+   ```bash
+   npm run android
+   ```
+2. **Note:** The first build may take some time. Be patient.
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## Troubleshooting
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- **Device Not Detected:**
+  - Ensure USB debugging is enabled on your device.
+  - Run `adb kill-server` followed by `adb start-server`.
+  - Check your USB connection.
+
+- **Package Installation Errors:**
+  - Clear the npm cache:
+    ```bash
+    npm cache clean --force
+    ```
+  - Delete `node_modules` and reinstall:
+    ```bash
+    rm -rf node_modules package-lock.json
+    npm install
+    ```
+
+- **Build Errors:**
+  - Check the Expo and React Native documentation for common issues.
+
+---
+
+## Additional Notes
+
+- The dependencies `expo-file-system` and `react-native-fs` are optional and may not be used in this project.
+- Make sure to keep all tools and dependencies updated for smooth development.
+
+---
